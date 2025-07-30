@@ -20,10 +20,7 @@
   "author": "EVMaria Services",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0",
-    "nodemailer": "^6.10.1"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"
