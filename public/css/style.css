@@ -229,7 +229,7 @@ p {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
+  height: 35vh;
   position: relative;
   display: flex;
   align-items: center;
