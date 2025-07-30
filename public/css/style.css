@@ -280,10 +280,12 @@ p {
 }
 
 .hero-buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0 auto;
   animation: fadeInUp 1s ease 0.4s both;
 }
 
@@ -784,6 +786,13 @@ p {
   }
 }
 
+@media (max-width: 1024px) {
+  .camps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-list {
     display: none;
@@ -960,13 +969,17 @@ img[src*="student-"] {
 .camps-section {
   padding: 100px 0;
   background: #f8f9fa;
+  text-align: center;
 }
 
 .camps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .camp-card {
@@ -975,6 +988,9 @@ img[src*="student-"] {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .camp-card:hover {
@@ -994,6 +1010,9 @@ img[src*="student-"] {
 
 .camp-content {
   padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .camp-location {
@@ -1018,6 +1037,7 @@ img[src*="student-"] {
   color: #666;
   position: relative;
   padding-left: 1.5rem;
+  text-align: left;
 }
 
 .camp-features li::before {
@@ -1026,6 +1046,28 @@ img[src*="student-"] {
   left: 0;
   color: #667eea;
   font-weight: bold;
+}
+
+.camp-content .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  margin-top: 1.5rem;
+}
+
+.camp-card h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.camp-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.camp-features {
+  margin-bottom: 1.5rem;
+  flex: 1;
+  text-align: left;
 }
 
 /* Team Section */
@@ -1814,6 +1856,11 @@ img[src*="student-"] {
     padding: 2rem;
   }
   
+  .camps-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  
   .camp-card,
   .team-card,
   .value-card,
@@ -1825,4 +1872,68 @@ img[src*="student-"] {
   .social-card {
     padding: 1.5rem;
   }
+}
+
+/* Coming Soon Badge for Malta */
+.coming-soon-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.coming-soon-badge i {
+  font-size: 1.2rem;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Camp Detail Content Enhancements */
+.camp-detail-content h3 {
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+}
+
+.camp-detail-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.camp-detail-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.camp-detail-content p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.camp-detail-content strong {
+  color: #667eea;
+  font-weight: 600;
 }
