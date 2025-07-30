@@ -404,7 +404,7 @@ p {
 .program-features {
   list-style: none;
   padding: 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .program-features li {
