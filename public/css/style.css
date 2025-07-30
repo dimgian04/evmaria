@@ -2043,98 +2043,97 @@ img[src*="student-"] {
 
 /* FAQ Section */
 .faq-section {
-  padding: 100px 0;
-  background: #f8f9fa;
+  background: #f4f7fa;
+  padding: 48px 0 32px 0;
 }
 
 .faq-grid {
-  max-width: 800px;
-  margin: 3rem auto 0;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .faq-item {
-  background: white;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  overflow: visible;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
 }
 
 .faq-question {
-  padding: 1.5rem;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  transition: background 0.3s ease;
+  justify-content: space-between;
+  background: transparent;
+  padding: 20px 28px 20px 28px;
+  border-radius: 12px;
+  margin-bottom: 0;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  font-size: 1.15em;
+  color: #1a237e;
+  position: relative;
+  z-index: 2;
+  box-shadow: none;
 }
 
-.faq-question:hover {
-  background: #f8f9fa;
+.faq-question.open, .faq-question:hover {
+  background: #e3eaff;
+  color: #0d133d;
 }
 
-.faq-question h3 {
-  margin: 0;
-  color: #333;
-}
-
-.faq-question i {
-  color: #667eea;
-  transition: transform 0.3s ease;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
+.faq-answer-row {
+  display: table-row;
+  width: 100%;
 }
 
 .faq-answer {
-  padding: 0 1.5rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  display: none;
+  padding: 0 28px 20px 28px;
+  background: linear-gradient(120deg, #fafdff 80%, #e3eaff 100%);
+  border-radius: 0 0 12px 12px;
+  font-size: 1.08em;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #3a2e5c;
+  text-shadow: 0 1px 0 #fff, 0 1px 8px #e3eaff44;
+  letter-spacing: 0.03em;
+  word-spacing: 0.08em;
+  line-height: 1.8;
+  box-shadow: 0 2px 12px 0 rgba(76, 110, 245, 0.06);
+  border-top: 1px solid #e3eaff;
+  animation: fadeInFaq 0.35s cubic-bezier(.4,1.4,.6,1);
+  margin-top: 0;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
 }
 
-.faq-item.active .faq-answer {
-  padding: 0 1.5rem 1.5rem;
-  max-height: 200px;
+@keyframes fadeInFaq {
+  from { opacity: 0; transform: translateY(-12px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
-/* Map Section */
-.map-section {
-  padding: 100px 0;
-  background: white;
+.faq-question .fa-chevron-down {
+  margin-left: 16px;
+  font-size: 1.1em;
+  color: #4b5cff;
+  transition: transform 0.2s, color 0.2s;
 }
 
-.map-container {
-  max-width: 800px;
-  margin: 3rem auto 0;
-}
-
-.map-placeholder {
-  height: 400px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
-
-.map-placeholder i {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.map-placeholder h3 {
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.map-placeholder p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
+.faq-question.open .fa-chevron-down {
+  transform: rotate(180deg);
+  color: #1a237e;
 }
 
 /* Social Section */
@@ -2210,5 +2209,123 @@ img[src*="student-"] {
   
   .mission-image img {
     height: 200px;
+  }
+}
+
+/* Team Section Updates */
+.team-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.team-description h3 {
+  font-size: 2rem;
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+}
+
+.team-description p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.team-main-image {
+  width: 400%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  object-position: center;
+  margin-top: 60px;
+}
+
+.team-main-image:hover {
+  transform: scale(1.02);
+}
+
+/* Responsibilities Section */
+.responsibilities-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.responsibilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.responsibility-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.responsibility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #4b5cff;
+}
+
+.responsibility-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 2rem;
+}
+
+.responsibility-card h3 {
+  font-size: 1.4rem;
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+
+.responsibility-card p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for team sections */
+@media (max-width: 768px) {
+  .team-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .team-description h3 {
+    font-size: 1.8rem;
+  }
+  
+  .team-description p {
+    font-size: 1.1rem;
+  }
+  
+  .team-main-image {
+    height: 300px;
+  }
+  
+  .responsibilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .responsibility-card {
+    padding: 2rem;
   }
 }
