@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evmaria – Educational Services</title>
+
+    <!-- FONTS & ICONS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a2c5e1ce7d.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <!-- CORE STYLES -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <header>
+      <div class="wrapper nav">
+        <a href="#" class="nav__logo">Evmaria</a>
+
+        <!-- MOBILE MENU TOGGLE -->
+        <button class="nav__toggle" aria-label="Open menu" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav__links" id="navbar">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="wrapper">
+        <h1>Unlock Global Learning Adventures</h1>
+        <p>
+          Summer camps and educational experiences in the UK, Ireland & Malta—designed to inspire
+          students through travel, language, and culture.
+        </p>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrapper">
+        <h2>Why Choose Evmaria?</h2>
+        <p style="text-align: center; max-width: 48rem; margin-inline: auto">
+          With a passion for education and exploration, we craft unforgettable journeys that blend
+          language learning, cultural immersion, and personal growth. Our team partners with top
+          universities and expert tutors to ensure your students thrive.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" style="background: var(--clr-gray-100)">
+      <div class="wrapper">
+        <h2>Our Services</h2>
+        <div class="services">
+          <article class="service-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Summer Camps</h3>
+            <p>Residential programs at leading UK universities with language classes and excursions.</p>
+          </article>
+          <article class="service-card">
+            <i class="fas fa-plane-departure"></i>
+            <h3>Educational Tours</h3>
+            <p>
+              Custom itineraries across Europe, combining academic visits, cultural landmarks, and fun
+              activities.
+            </p>
+          </article>
+          <article class="service-card">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>English Courses</h3>
+            <p>Intensive language lessons with qualified instructors to boost confidence and fluency.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="wrapper">
+        <h2>Kind Words</h2>
+        <div class="testimonials">
+          <blockquote class="testimonial">
+            <p>
+              “Our students returned with unforgettable memories and noticeably improved English
+              skills. The Evmaria team took care of every detail.”
+            </p>
+            <span>— Maria K., School Coordinator</span>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>
+              “The excursions were the perfect mix of learning and fun. Highly recommended for any
+              school group.”
+            </p>
+            <span>— James L., Teacher</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="wrapper">
+      <div class="cta" id="contact">
+        <h2>Ready to Start Planning?</h2>
+        <p>Let’s create a tailored educational experience for your students.</p>
+        <a href="mailto:info@evmaria-services.co.uk" class="btn">
+          <i class="fas fa-envelope"></i>
+          Email Us
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2025 Evmaria Educational Services. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTION SCRIPT -->
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
