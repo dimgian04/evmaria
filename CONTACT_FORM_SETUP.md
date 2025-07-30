@@ -3,7 +3,7 @@
 ## Overview
 The contact form is now fully functional with email sending capabilities. It includes:
 - Real-time form validation
-- Email notifications to EVMaria Services
+- Email notifications to Evmaria Services
 - Confirmation emails to users
 - Enhanced UI/UX with loading states and animations
 
@@ -47,7 +47,7 @@ npm start
 - **Real-time Feedback**: Shows errors as users type
 
 ### Email Notifications
-- **Admin Notification**: Detailed email sent to EVMaria Services with all form data
+- **Admin Notification**: Detailed email sent to Evmaria Services with all form data
 - **User Confirmation**: Professional confirmation email sent to the user
 - **HTML Templates**: Beautiful, branded email templates
 
@@ -65,7 +65,7 @@ npm start
 ## Email Templates
 
 ### Admin Notification Email
-- Professional layout with EVMaria branding
+- Professional layout with Evmaria branding
 - Organized sections for contact info, program interest, and message
 - Includes submission timestamp and user preferences
 

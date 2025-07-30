@@ -1,7 +1,7 @@
 {
   "name": "evmaria",
   "version": "1.0.0",
-  "description": "EVMaria Services - Summer Language Camps & Educational Activities",
+  "description": "Evmaria Services - Summer Language Camps & Educational Activities",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -17,7 +17,7 @@
     "malta-camps",
     "scotland-camps"
   ],
-  "author": "EVMaria Services",
+  "author": "Evmaria Services",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
