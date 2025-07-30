@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - EVMaria Services</title>
+  <meta name="description" content="Get in touch with EVMaria Services. Contact us for information about our summer language camps, enrollment, or any questions you may have.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo-section">
+          <img src="images/evmaria-logo.png" alt="EVMaria Services Logo" class="logo">
+          <span class="logo-text">EVMaria Services</span>
+        </div>
+        
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li class="dropdown">
+              <a href="travel-camps.html" class="nav-link">Travel Camps <i class="fas fa-chevron-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="travel-camps.html#uk-camps">UK Summer Camps</a></li>
+                <li><a href="travel-camps.html#ireland-camps">Ireland Summer Camps</a></li>
+                <li><a href="travel-camps.html#malta-camps">Malta Summer Camps</a></li>
+                <li><a href="travel-camps.html#scotland-camps">Scotland Summer Camps</a></li>
+              </ul>
+            </li>
+            <li><a href="team.html" class="nav-link">The Team</a></li>
+            <li><a href="why-evmaria.html" class="nav-link">Why EVMaria</a></li>
+            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+            <li><a href="contact.html" class="nav-link active">Contact</a></li>
+          </ul>
+        </nav>
+        
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Get In Touch</h1>
+        <p class="hero-subtitle">Ready to start your summer adventure? Contact us today!</p>
+        <div class="hero-buttons">
+          <a href="#contact-form" class="btn btn-primary">Send Message</a>
+          <a href="#contact-info" class="btn btn-secondary">Contact Info</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section id="contact-info" class="contact-info-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Information</h2>
+        <p>Multiple ways to reach our team</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Office Address</h3>
+          <p>15a Station Road<br>Epping, Essex<br>CM16 4HG, UK</p>
+          <a href="https://maps.google.com/?q=15a+Station+Road+Epping+Essex+CM16+4HG+UK" target="_blank" class="btn btn-secondary">Get Directions</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email Us</h3>
+          <p><a href="mailto:evmariaservises@gmail.com">evmariaservises@gmail.com</a></p>
+          <p><a href="mailto:info@evmaria-services.co.uk">info@evmaria-services.co.uk</a></p>
+          <a href="mailto:evmariaservises@gmail.com" class="btn btn-secondary">Send Email</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Call Us</h3>
+          <p>+44 (0) 20 1234 5678</p>
+          <p>Monday - Friday: 9:00 AM - 6:00 PM GMT</p>
+          <a href="tel:+442012345678" class="btn btn-secondary">Call Now</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Office Hours</h3>
+          <p><strong>Monday - Friday:</strong><br>9:00 AM - 6:00 PM GMT</p>
+          <p><strong>Saturday:</strong><br>10:00 AM - 2:00 PM GMT</p>
+          <p><strong>Sunday:</strong><br>Closed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="contact-form-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Send Us a Message</h2>
+        <p>We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+      </div>
+      
+      <div class="form-container">
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="country">Country *</label>
+            <select id="country" name="country" required>
+              <option value="">Select your country</option>
+              <option value="UK">United Kingdom</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="AU">Australia</option>
+              <option value="DE">Germany</option>
+              <option value="FR">France</option>
+              <option value="IT">Italy</option>
+              <option value="ES">Spain</option>
+              <option value="BR">Brazil</option>
+              <option value="MX">Mexico</option>
+              <option value="JP">Japan</option>
+              <option value="KR">South Korea</option>
+              <option value="CN">China</option>
+              <option value="IN">India</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="program">Program of Interest *</label>
+            <select id="program" name="program" required>
+              <option value="">Select a program</option>
+              <optgroup label="UK Summer Camps">
+                <option value="kingston">Kingston University</option>
+                <option value="westminster">University of Westminster</option>
+                <option value="surrey">University of Surrey</option>
+                <option value="hatfield">Hatfield University</option>
+                <option value="brunel">Brunel University</option>
+                <option value="bath">Bath University</option>
+                <option value="ellesmere">Ellesmere College</option>
+                <option value="loughborough">Loughborough University</option>
+                <option value="chelmsford">Chelmsford University</option>
+              </optgroup>
+              <optgroup label="Ireland Summer Camps">
+                <option value="dublin">Dublin University</option>
+              </optgroup>
+              <optgroup label="Malta Summer Camps">
+                <option value="malta">Malta Village</option>
+              </optgroup>
+              <optgroup label="Scotland Summer Camps">
+                <option value="edinburgh">Edinburgh University</option>
+                <option value="stirling">Stirling University</option>
+              </optgroup>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell us about your interest in our programs, any questions you have, or how we can help you..." required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="newsletter" value="yes">
+              <span class="checkmark"></span>
+              I would like to receive updates about EVMaria Services programs and special offers
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacy" value="yes" required>
+              <span class="checkmark"></span>
+              I agree to the <a href="#privacy-policy">Privacy Policy</a> and consent to being contacted regarding my inquiry
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our programs</p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What age groups do you accept?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We accept students aged 12-18 for our summer language camps. Programs are tailored to different age groups to ensure appropriate learning experiences.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What language levels do you accommodate?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We welcome students of all English levels, from beginner to advanced. Students take a placement test upon arrival to ensure they're placed in the appropriate class.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What's included in the program fee?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our program fees include accommodation, meals, language classes, cultural activities, excursions, airport transfers, and 24/7 supervision. Airfare is not included.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do you ensure student safety?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Student safety is our top priority. We provide 24/7 supervision, maintain strict safety protocols, and all our staff are thoroughly vetted and trained in child protection.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can parents visit during the program?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>While we don't encourage visits during the program as it can disrupt the immersive experience, we can arrange visits with advance notice and proper coordination.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What happens if a student gets sick?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We have comprehensive medical support and insurance coverage. Our staff are trained in first aid, and we have access to local medical facilities at all our locations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Find Us</h2>
+        <p>Visit our office in Epping, Essex</p>
+      </div>
+      
+      <div class="map-container">
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <h3>Interactive Map</h3>
+          <p>15a Station Road, Epping, Essex, CM16 4HG, UK</p>
+          <a href="https://maps.google.com/?q=15a+Station+Road+Epping+Essex+CM16+4HG+UK" target="_blank" class="btn btn-primary">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section class="social-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Connect With Us</h2>
+        <p>Follow us on social media for updates, photos, and student stories</p>
+      </div>
+      
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-icon">
+            <i class="fab fa-facebook"></i>
+          </div>
+          <h3>Facebook</h3>
+          <p>Follow us for program updates, student photos, and community stories.</p>
+          <a href="#" class="btn btn-secondary">Follow Us</a>
+        </div>
+
+        <div class="social-card">
+          <div class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <h3>Instagram</h3>
+          <p>See daily photos and videos from our summer camps and activities.</p>
+          <a href="#" class="btn btn-secondary">Follow Us</a>
+        </div>
+
+        <div class="social-card">
+          <div class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </div>
+          <h3>Twitter</h3>
+          <p>Get real-time updates about our programs and educational news.</p>
+          <a href="#" class="btn btn-secondary">Follow Us</a>
+        </div>
+
+        <div class="social-card">
+          <div class="social-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>Connect with us professionally and learn about our educational partnerships.</p>
+          <a href="#" class="btn btn-secondary">Follow Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="images/evmaria-logo.png" alt="EVMaria Services Logo" class="footer-logo">
+          <p>EVMaria Services Ltd.</p>
+          <p>Educational activities and summer language camps across the UK, Ireland, Malta, and Scotland.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="travel-camps.html">Travel Camps</a></li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="#contact-info">Contact Information</a></li>
+            <li><a href="#contact-form">Send Message</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#map">Find Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <p>15a Station Road, Epping, Essex, CM16 4HG, UK</p>
+          <p><a href="mailto:evmariaservises@gmail.com">evmariaservises@gmail.com</a></p>
+          <p>+44 (0) 20 1234 5678</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 EVMARIA SERVICES Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html> 
