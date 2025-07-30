@@ -388,6 +388,7 @@ p {
 .program-features {
   list-style: none;
   padding: 0;
+  text-align: center;
 }
 
 .program-features li {
@@ -2438,5 +2439,262 @@ img[src*="student-"] {
   
   .responsibility-card {
     padding: 2rem;
+  }
+}
+
+/* Features Section - New Layout */
+.features-layout {
+  margin-top: 3rem;
+}
+
+.top-image,
+.bottom-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 3rem;
+}
+
+.top-image:hover,
+.bottom-image:hover {
+  transform: scale(1.02);
+}
+
+.top-image img,
+.bottom-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.top-image:hover img,
+.bottom-image:hover img {
+  transform: scale(1.05);
+}
+
+.features-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.features-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-column .features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.features-column .feature-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.features-column .feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-left-color: #4b5cff;
+}
+
+.features-column .feature-item i {
+  color: #4b5cff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.features-column .feature-item h4 {
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.features-column .feature-item p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive adjustments for new features layout */
+@media (max-width: 1024px) {
+  .features-two-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .top-image,
+  .bottom-image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-two-columns {
+    gap: 1.5rem;
+  }
+  
+  .top-image,
+  .bottom-image {
+    height: 200px;
+    margin-bottom: 2rem;
+  }
+  
+  .features-column .feature-item {
+    padding: 1.25rem;
+  }
+}
+
+/* Popup Modal */
+.popup-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+  position: relative;
+  background-color: white;
+  margin: 5% auto;
+  padding: 0;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.4s ease;
+  overflow: hidden;
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+  color: #000;
+  background: white;
+  transform: scale(1.1);
+}
+
+.popup-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.popup-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popup-text {
+  padding: 2rem;
+  text-align: center;
+}
+
+.popup-text h3 {
+  color: #1a237e;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.popup-text p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.popup-text .btn {
+  margin-top: 1rem;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.popup-buttons .btn {
+  margin-top: 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive adjustments for popup */
+@media (max-width: 768px) {
+  .popup-content {
+    margin: 10% auto;
+    width: 95%;
+  }
+  
+  .popup-image {
+    height: 200px;
+  }
+  
+  .popup-text {
+    padding: 1.5rem;
+  }
+  
+  .popup-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .popup-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .popup-buttons .btn {
+    width: 100%;
   }
 }

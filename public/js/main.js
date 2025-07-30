@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollEffects();
     initAnimations();
     initDropdowns();
+    initPopupModal();
 });
 
 // Mobile Menu Functionality
@@ -379,3 +380,45 @@ window.EVMariaUtils = {
     debounce,
     throttle
 }; 
+
+// Popup Modal Functionality
+function initPopupModal() {
+    const popupModal = document.getElementById('popup-modal');
+    const popupClose = document.querySelector('.popup-close');
+    
+    if (popupModal && popupClose) {
+        // Check if popup has been shown in this session
+        const popupShown = sessionStorage.getItem('popupShown');
+        
+        if (!popupShown) {
+            // Show popup after 15 seconds
+            setTimeout(() => {
+                popupModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                sessionStorage.setItem('popupShown', 'true');
+            }, 15000);
+        }
+        
+        // Close popup functionality
+        popupClose.addEventListener('click', () => {
+            popupModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+        
+        // Close popup when clicking outside
+        popupModal.addEventListener('click', (e) => {
+            if (e.target === popupModal) {
+                popupModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && popupModal.style.display === 'block') {
+                popupModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+} 
