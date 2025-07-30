@@ -229,7 +229,8 @@ p {
 
 /* Hero Section */
 .hero {
-  height: 35vh;
+  height: 40vh;
+  min-height: 300px;
   position: relative;
   display: flex;
   align-items: center;
@@ -262,29 +263,40 @@ p {
 .hero-content {
   max-width: 800px;
   padding: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 700;
   margin-bottom: 1rem;
   animation: fadeInUp 1s ease;
+  line-height: 1.1;
+  max-width: 100%;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 300;
   margin-bottom: 2rem;
   opacity: 0.9;
   animation: fadeInUp 1s ease 0.2s both;
+  line-height: 1.3;
+  max-width: 100%;
 }
 
 .hero-buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: clamp(0.5rem, 2vw, 1rem);
   justify-content: center;
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   animation: fadeInUp 1s ease 0.4s both;
 }
@@ -863,17 +875,25 @@ p {
     display: flex;
   }
   
+  .hero {
+    height: 45vh;
+    min-height: 350px;
+  }
+  
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 0.8rem;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    margin-bottom: 1.5rem;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
   }
   
   .features-grid {
@@ -993,8 +1013,23 @@ p {
     padding: 0 15px;
   }
   
+  .hero {
+    height: 50vh;
+    min-height: 400px;
+  }
+  
   .hero-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    margin-bottom: 0.6rem;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+    margin-bottom: 1.2rem;
+  }
+  
+  .hero-buttons {
+    gap: 0.6rem;
   }
   
   .section-header h2 {
@@ -1064,6 +1099,45 @@ img[src*="student-"] {
   color: white;
   font-weight: 600;
   font-size: 0.8rem;
+}
+
+/* Additional responsive hero styles */
+@media (min-width: 1200px) {
+  .hero {
+    height: 45vh;
+    min-height: 450px;
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+  }
+}
+
+
+
+@media (max-width: 360px) {
+  .hero {
+    height: 55vh;
+    min-height: 350px;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.2rem, 8vw, 1.8rem);
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(0.7rem, 4vw, 0.9rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-buttons {
+    gap: 0.5rem;
+  }
 }
 
 /* Additional styles for new pages */
