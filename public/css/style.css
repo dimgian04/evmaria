@@ -340,6 +340,10 @@ p {
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
 }
 
 .program-card.animate-in {
