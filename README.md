@@ -1,6 +1,6 @@
-# EVMaria Services - Summer Language Camps
+# Evmaria Services - Summer Language Camps
 
-A modern, responsive website for EVMaria Services, offering summer language camps and educational activities across the UK, Ireland, Malta, and Scotland.
+A modern, responsive website for Evmaria Services, offering summer language camps and educational activities across the UK, Ireland, Malta, and Scotland.
 
 ## 🌟 Features
 
@@ -176,7 +176,7 @@ The website is fully responsive and optimized for:
 
 ## 📞 Contact Information
 
-**EVMaria Services Ltd.**
+**Evmaria Services Ltd.**
 - **Address**: 15a Station Road, Epping, Essex, CM16 4HG, UK
 - **Email**: evmariaservises@gmail.com
 - **Website**: www.evmaria-services.co.uk
@@ -202,4 +202,4 @@ This project is licensed under the ISC License - see the LICENSE file for detail
 
 ---
 
-**Built with ❤️ for EVMaria Services** 
+**Built with ❤️ for Evmaria Services** 

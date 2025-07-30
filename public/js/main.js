@@ -1,4 +1,4 @@
-// EVMaria Services - Main JavaScript File
+// Evmaria Services - Main JavaScript File
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
@@ -506,7 +506,7 @@ function throttle(func, limit) {
 }
 
 // Export functions for potential use in other scripts
-window.EVMariaUtils = {
+window.EvmariaUtils = {
     showNotification,
     debounce,
     throttle

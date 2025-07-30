@@ -164,7 +164,7 @@ app.post('/api/contact', async (req, res) => {
             
             <div class="footer">
               <p style="margin: 0; color: #666; font-size: 14px;">
-                This email was sent from your EVMaria Services contact form
+                This email was sent from your Evmaria Services contact form
               </p>
             </div>
           </div>
@@ -180,14 +180,14 @@ app.post('/api/contact', async (req, res) => {
     const confirmationMailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Thank you for contacting EVMaria Services',
+      subject: 'Thank you for contacting Evmaria Services',
       html: `
         <!DOCTYPE html>
         <html lang="en">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Thank you for contacting EVMaria Services</title>
+          <title>Thank you for contacting Evmaria Services</title>
           <style>
             body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
             .container { max-width: 600px; margin: 0 auto; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 15px; overflow: hidden; }
@@ -238,7 +238,7 @@ app.post('/api/contact', async (req, res) => {
             <div class="content">
               <div class="welcome">
                 <h2>Dear ${firstName} ${lastName}</h2>
-                <p>Thank you for reaching out to EVMaria Services! We have received your message and our team will get back to you within 24-48 hours.</p>
+                <p>Thank you for reaching out to Evmaria Services! We have received your message and our team will get back to you within 24-48 hours.</p>
               </div>
               
               <div class="summary">
@@ -280,7 +280,7 @@ app.post('/api/contact', async (req, res) => {
                 <div class="link-item">
                   <div class="link-icon">💡</div>
                   <div class="link-text">
-                    <h4>Why Choose EVMaria</h4>
+                    <h4>Why Choose Evmaria</h4>
                     <p>Learn about our unique approach and what sets us apart from others</p>
                   </div>
                   <a href="#" class="link-button">Learn More</a>
@@ -305,13 +305,13 @@ app.post('/api/contact', async (req, res) => {
               
               <div class="signature">
                 <h3>Best regards</h3>
-                <p>The EVMaria Services Team</p>
+                <p>The Evmaria Services Team</p>
               </div>
             </div>
             
             <div class="footer">
               <p style="margin: 0; color: #666; font-size: 14px;">
-                EVMaria Services Ltd. - Educational activities and summer language camps
+                Evmaria Services Ltd. - Educational activities and summer language camps
               </p>
             </div>
           </div>
