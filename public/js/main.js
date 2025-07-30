@@ -62,32 +62,163 @@ function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            // Get submit button and show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
-            // Basic validation
-            if (!data.name || !data.email || !data.message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Enhanced validation
+                const requiredFields = ['firstName', 'lastName', 'email', 'country', 'program', 'message'];
+                const missingFields = requiredFields.filter(field => !data[field] || data[field].trim() === '');
+                
+                if (missingFields.length > 0) {
+                    showNotification('Please fill in all required fields.', 'error');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.email)) {
+                    showNotification('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                // Phone validation (if provided)
+                if (data.phone && data.phone.trim() !== '') {
+                    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                    if (!phoneRegex.test(data.phone.replace(/[\s\-\(\)]/g, ''))) {
+                        showNotification('Please enter a valid phone number.', 'error');
+                        return;
+                    }
+                }
+                
+                // Privacy policy validation
+                if (!data.privacy) {
+                    showNotification('Please accept the Privacy Policy to continue.', 'error');
+                    return;
+                }
+                
+                // Send form data to server
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(result.message, 'success');
+                    this.reset();
+                    
+                    // Scroll to top to show success message
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    showNotification(result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showNotification('Sorry, there was an error sending your message. Please try again later or contact us directly.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Simulate form submission
-            showNotification('Thank you! Your message has been sent. We\'ll get back to you soon.', 'success');
-            
-            // Reset form
-            this.reset();
         });
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('input', function() {
+                clearFieldError(this);
+            });
+        });
+    }
+}
+
+// Field validation function
+function validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.name;
+    
+    // Clear previous error
+    clearFieldError(field);
+    
+    // Required field validation
+    if (field.hasAttribute('required') && !value) {
+        showFieldError(field, 'This field is required.');
+        return false;
+    }
+    
+    // Email validation
+    if (fieldName === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(field, 'Please enter a valid email address.');
+            return false;
+        }
+    }
+    
+    // Phone validation
+    if (fieldName === 'phone' && value) {
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        if (!phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''))) {
+            showFieldError(field, 'Please enter a valid phone number.');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// Show field error
+function showFieldError(field, message) {
+    // Remove existing error
+    clearFieldError(field);
+    
+    // Add error class
+    field.classList.add('error');
+    
+    // Create error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'field-error';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = `
+        color: #f44336;
+        font-size: 0.875rem;
+        margin-top: 5px;
+        display: block;
+    `;
+    
+    // Insert error message after field
+    field.parentNode.appendChild(errorDiv);
+}
+
+// Clear field error
+function clearFieldError(field) {
+    field.classList.remove('error');
+    const errorDiv = field.parentNode.querySelector('.field-error');
+    if (errorDiv) {
+        errorDiv.remove();
     }
 }
 
