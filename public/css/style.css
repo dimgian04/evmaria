@@ -133,7 +133,9 @@ p {
 .nav-link {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
   transition: color 0.3s ease;
   position: relative;
 }
@@ -278,6 +280,7 @@ p {
   animation: fadeInUp 1s ease;
   line-height: 1.1;
   max-width: 100%;
+  margin-top: 75px;
 }
 
 .hero-subtitle {
@@ -1069,7 +1072,9 @@ html {
 
 /* Placeholder images */
 img[src*="evmaria-logo"] {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1077,6 +1082,7 @@ img[src*="evmaria-logo"] {
   color: white;
   font-weight: 600;
   font-size: 0.8rem;
+  /* object-fit: contain; */
 }
 
 img[src*="travel-elements"] {
@@ -2692,6 +2698,7 @@ img[src*="student-"] {
 .bottom-image:hover img {
   transform: scale(1.05);
 }
+
 
 .features-two-columns {
   display: grid;
