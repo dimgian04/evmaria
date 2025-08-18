@@ -1510,7 +1510,8 @@ img[src*="student-"] {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 2rem;
+  /* Center vertically with the text column */
+  margin-top: 0;
 }
 
 .mission-image img {
@@ -1520,6 +1521,7 @@ img[src*="student-"] {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  margin-left: 100px;
 }
 
 .mission-image img:hover {
@@ -1576,7 +1578,7 @@ img[src*="student-"] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
   margin-top: 3rem;
 }
 
@@ -1676,6 +1678,8 @@ img[src*="student-"] {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  /* Offset images to start where the first paragraph begins (after the h3). 2.5rem * 1.2 (line-height) + 1.5rem margin */
+  margin-top: calc(2.5rem * 1.2 + 1.5rem);
 }
 
 .services-image img {
@@ -1696,6 +1700,7 @@ img[src*="student-"] {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  margin-left: 100px;
 }
 
 /* Updated Mission Section */
