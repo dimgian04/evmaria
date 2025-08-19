@@ -2918,3 +2918,176 @@ img[src*="student-"] {
     width: 100%;
   }
 }
+
+/* Camp Gallery (Slider) */
+.camp-gallery {
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.camp-gallery-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.camp-gallery-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.camp-gallery-viewport {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+}
+
+.camp-gallery-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.camp-gallery-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.camp-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.camp-gallery .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #e9ecef;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #667eea;
+}
+
+.camp-gallery .nav-btn:hover {
+  background: #fff;
+}
+
+.camp-gallery .nav-prev { left: 12px; }
+.camp-gallery .nav-next { right: 12px; }
+
+.camp-gallery-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.camp-gallery-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.camp-gallery-dots button.active {
+  background: #667eea;
+}
+
+@media (max-width: 768px) {
+  .camp-gallery-viewport { height: 220px; }
+}
+
+/* Lightbox for Gallery */
+.camp-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.camp-lightbox.open { display: flex; }
+
+.camp-lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.camp-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+.camp-lightbox .lb-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.camp-lightbox .lb-prev { left: -64px; }
+.camp-lightbox .lb-next { right: -64px; }
+
+.camp-lightbox .lb-close {
+  position: absolute;
+  top: -56px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .camp-lightbox .lb-prev { left: -44px; }
+  .camp-lightbox .lb-next { right: -44px; }
+}
+
+/* Camps: remove gallery header bar and unify theme */
+.camp-gallery-header { display: none; }
+
+/* Force dedicated camp pages to use main theme color */
+.camp-detail-header { background: linear-gradient(135deg, #667eea 0%, #667eea 100%) !important; }
+.camp-detail-body h3 { color: #667eea !important; }
+.back-button:hover { background: #667eea !important; }

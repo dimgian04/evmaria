@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initDropdowns();
     initPopupModal();
     initHeroSlider();
+    initCampGalleries();
 });
 
 // Mobile Menu Functionality
@@ -556,6 +557,100 @@ document.addEventListener('DOMContentLoaded', function() {
         counterObserver.observe(counterSection);
     }
 });
+
+// Camp Galleries (slider + lightbox)
+function initCampGalleries() {
+    const galleries = document.querySelectorAll('.camp-gallery');
+    if (!galleries.length) return;
+
+    galleries.forEach(gallery => {
+        const track = gallery.querySelector('.camp-gallery-track');
+        const slides = Array.from(gallery.querySelectorAll('.camp-gallery-slide'));
+        const prevBtn = gallery.querySelector('.nav-prev');
+        const nextBtn = gallery.querySelector('.nav-next');
+        const dotsContainer = gallery.querySelector('.camp-gallery-dots');
+        if (!track || !slides.length) return;
+
+        let current = 0;
+
+        // Dots
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.addEventListener('click', () => goTo(idx));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateUI() {
+            track.style.transform = `translateX(-${current * 100}%)`;
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('button');
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+        }
+
+        function goTo(index) {
+            current = (index + slides.length) % slides.length;
+            updateUI();
+        }
+
+        function next() { goTo(current + 1); }
+        function prev() { goTo(current - 1); }
+
+        if (nextBtn) nextBtn.addEventListener('click', next);
+        if (prevBtn) prevBtn.addEventListener('click', prev);
+
+        // Lightbox
+        const lightbox = document.createElement('div');
+        lightbox.className = 'camp-lightbox';
+        lightbox.innerHTML = `
+            <div class="camp-lightbox-content">
+                <button class="lb-close" aria-label="Close">&times;</button>
+                <button class="lb-btn lb-prev" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+                <img alt="Camp photo" />
+                <button class="lb-btn lb-next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+        const lbImg = lightbox.querySelector('img');
+        const lbPrev = lightbox.querySelector('.lb-prev');
+        const lbNext = lightbox.querySelector('.lb-next');
+        const lbClose = lightbox.querySelector('.lb-close');
+
+        function openLightbox(index) {
+            current = index;
+            lbImg.src = slides[current].querySelector('img').src;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        lbPrev.addEventListener('click', () => { prev(); lbImg.src = slides[current].querySelector('img').src; });
+        lbNext.addEventListener('click', () => { next(); lbImg.src = slides[current].querySelector('img').src; });
+        lbClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') { prev(); lbImg.src = slides[current].querySelector('img').src; }
+            if (e.key === 'ArrowRight') { next(); lbImg.src = slides[current].querySelector('img').src; }
+        });
+
+        // Open on click
+        slides.forEach((slide, idx) => {
+            slide.addEventListener('click', () => openLightbox(idx));
+        });
+
+        // Init
+        updateUI();
+    });
+}
 
 // Utility Functions
 function debounce(func, wait) {
