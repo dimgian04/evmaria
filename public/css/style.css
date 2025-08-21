@@ -1282,6 +1282,7 @@ img[src*="student-"] {
 /* Team Section */
 .team-section {
   padding: 100px 0;
+  text-align:center;
   background: white;
 }
 
@@ -1414,11 +1415,17 @@ img[src*="student-"] {
 }
 
 /* Join Team Section */
-.join-team-section {
+/* .join-team-section {
   padding: 80px 0;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-600) 100%);
   color: white;
   text-align: center;
+} */
+
+.join-team-content {
+  max-width: 900px;   /* keeps it from stretching too wide */
+  margin: 0 auto;     /* centers the whole block */
+  text-align: center; /* centers all text */
 }
 
 .join-team-content h2 {
@@ -1432,12 +1439,12 @@ img[src*="student-"] {
   font-size: 1.2rem;
 }
 
-.join-team-buttons {
+/* .join-team-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-}
+} */
 
 /* Mission Section */
 .mission-section {
@@ -2592,12 +2599,14 @@ img[src*="student-"] {
 
 .team-description h3 {
   font-size: 2rem;
+  text-align:center;
   color: #1a237e;
   margin-bottom: 1.5rem;
 }
 
 .team-description p {
   font-size: 1.2rem;
+  text-align:center;
   line-height: 1.8;
   color: #555;
 }
