@@ -232,7 +232,8 @@ p {
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
-  z-index: 1001;
+  position: relative;
+  z-index: 2000;
 }
 
 .mobile-menu-toggle span {
@@ -689,6 +690,9 @@ p {
 .footer-logo {
   height: 40px;
   margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer-links {
@@ -710,11 +714,12 @@ p {
   color: white;
 }
 
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
 
 .social-link {
   width: 40px;
@@ -861,6 +866,17 @@ p {
 }
 
 @media (max-width: 768px) {
+  /* Hide gallery on mobile testimonials page */
+  .partner-gallery {
+    display: none;
+  }
+
+  /* Ensure slideshow is visible on mobile */
+  .hero-slider,
+  .slider {
+    display: block !important;
+  }
+
   .nav-list {
     display: none;
   }
@@ -914,21 +930,22 @@ p {
     text-align: center;
   }
 
-  /* Dropdown behavior inside mobile nav */
-  .main-nav.active .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    transform: none;
+  /* Remove dropdown submenu from mobile completely */
+  .main-nav .dropdown-menu,
+  .main-nav.active .dropdown-menu,
+  .dropdown .dropdown-menu,
+  .dropdown .dropdown-menu.active {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  .main-nav.active .dropdown .dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .main-nav.active .dropdown .dropdown-menu.active {
-    opacity: 1;
-    visibility: visible;
+  /* Hide dropdown arrow on mobile */
+  .dropdown .nav-link i.fas.fa-chevron-down {
+    display: none;
   }
   
   .features-grid {
@@ -997,27 +1014,42 @@ p {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
-  .dropdown-menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    background: transparent;
-    padding: 0;
-    margin-left: 1rem;
+
+  /* Center footer logo on mobile */
+  .footer-logo {
+    margin: 0 auto 1rem;
+  }
+
+  /* Remove unnecessary social-section on mobile */
+  .social-section {
+    display: none;
   }
   
-  .dropdown-menu li a {
-    padding: 0.25rem 0;
-    color: #666;
-  }
+  /* Ensure no stray submenu spacing on mobile */
+  .dropdown-menu { display: none !important; }
 
   /* Services Section Mobile */
   .services-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 2rem;
+    text-align: center;
+  }
+
+  .services-text {
+    order: 1;
+  }
+
+  .services-image {
+    order: 2;
+    margin-top: 0 !important;
+  }
+
+  .service-image-top,
+  .service-image-main,
+  .service-image-bottom {
+    margin-left: 0 !important;
+    max-width: 100%;
+    height: 250px;
   }
 
   .service-features {
@@ -1033,13 +1065,67 @@ p {
   }
 
   /* Mission Section Mobile */
+  .mission-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .mission-text {
+    order: 1;
+  }
+
+  .mission-image {
+    order: 2;
+    margin-top: 0;
+  }
+
+  .mission-image img {
+    margin-left: 0 !important;
+    height: 250px;
+  }
+
   .mission-pillars {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 1.5rem;
   }
 
   .pillar {
     padding: 1.5rem;
+  }
+
+  .advantages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .approach-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .quality-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  /* Fix horizontal scroll issues */
+  .container {
+    overflow-x: hidden;
+  }
+
+  .services-section,
+  .mission-section,
+  .advantages-section,
+  .approach-section,
+  .quality-section,
+  .stats-section {
+    overflow-x: hidden;
   }
 }
 
@@ -2599,10 +2685,12 @@ img[src*="student-"] {
 }
 
 .team-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
   margin-top: 3rem;
 }
 
@@ -2613,7 +2701,7 @@ img[src*="student-"] {
   background: transparent;
   border-radius: 0;
   box-shadow: none;
-  margin-left: 80px;
+  margin-left: 0;
 }
 
 .team-content .team-image img {
@@ -2638,13 +2726,14 @@ img[src*="student-"] {
 
 .team-main-image {
   width: 100%;
-  height: auto;
-   object-fit: contain; 
+  height: 420px;
+  object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   object-position: center;
-  margin-top: 60px;
+  margin-top: 20px;
+  display: block;
 }
 
 .team-main-image:hover {
@@ -2708,8 +2797,8 @@ img[src*="student-"] {
 /* Responsive adjustments for team sections */
 @media (max-width: 768px) {
   .team-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    text-align: center;
   }
   
   .team-description h3 {
@@ -2721,7 +2810,7 @@ img[src*="student-"] {
   }
   
   .team-main-image {
-    height: 300px;
+    height: 260px;
   }
   
   .responsibilities-grid {
@@ -2989,6 +3078,111 @@ img[src*="student-"] {
   .popup-buttons .btn {
     width: 100%;
   }
+}
+
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  height: 55vh;
+  min-height: 480px;
+}
+
+.slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slider-arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.slider-arrow.prev {
+  left: 30px;
+}
+
+.slider-arrow.next {
+  right: 30px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.slider-dots button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dots button:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-dots button.active {
+  background: white;
+  border-color: white;
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Camp Gallery (Slider) */
