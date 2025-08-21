@@ -279,6 +279,7 @@ function initDropdowns() {
     
     dropdowns.forEach(dropdown => {
         const menu = dropdown.querySelector('.dropdown-menu');
+        const triggerLink = dropdown.querySelector('a.nav-link');
         
         // Desktop hover
         dropdown.addEventListener('mouseenter', function() {
@@ -297,13 +298,21 @@ function initDropdowns() {
             }
         });
         
-        // Mobile touch
-        dropdown.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                menu.classList.toggle('active');
-            }
-        });
+        // Mobile: disable dropdown behavior and allow direct navigation
+        if (triggerLink) {
+            triggerLink.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    // Close mobile nav after navigation intent
+                    const nav = document.querySelector('.main-nav');
+                    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                    if (nav && mobileToggle) {
+                        nav.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                    }
+                    // Let browser follow the link normally
+                }
+            });
+        }
     });
 }
 
