@@ -257,18 +257,20 @@ p {
 
 /* Hero Section */
 .hero {
-  height: 70vh;
-  min-height: 780px;
+  height: 80vh;
+  min-height: 900px;
   position: relative;
   overflow: hidden;
 }
 
 .hero-image {
   position: absolute;
+  object-position: top;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  height: 100%;
 
 }
 
@@ -276,8 +278,9 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   display: block;
+  transform: scale(1.2);
 
 }
 
@@ -903,8 +906,8 @@ p {
   }
   
   .hero {
-    height: 45vh;
-    min-height: 350px;
+    height: 55vh;
+    min-height: 450px;
   }
   
   .hero-title {
@@ -1135,8 +1138,8 @@ p {
   }
   
   .hero {
-    height: 50vh;
-    min-height: 400px;
+    height: 60vh;
+    min-height: 500px;
   }
   
   .hero-title {
@@ -1228,8 +1231,8 @@ img[src*="student-"] {
 /* Additional responsive hero styles */
 @media (min-width: 1200px) {
   .hero {
-    height: 45vh;
-    min-height: 450px;
+    height: 55vh;
+    min-height: 550px;
   }
   
   .hero-title {
@@ -1245,8 +1248,8 @@ img[src*="student-"] {
 
 @media (max-width: 360px) {
   .hero {
-    height: 55vh;
-    min-height: 350px;
+    height: 65vh;
+    min-height: 450px;
   }
   
   .hero-title {
