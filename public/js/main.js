@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPopupModal();
     initHeroSlider();
     initCampGalleries();
+    initTestimonialsLightbox();
 });
 
 // Mobile Menu Functionality
@@ -649,6 +650,136 @@ function initCampGalleries() {
 
         // Init
         updateUI();
+    });
+}
+
+// Testimonials Gallery Lightbox (uses the same lightbox UI as camps)
+function initTestimonialsLightbox() {
+    const galleryItems = document.querySelectorAll('.partner-gallery .gallery-item');
+    if (!galleryItems.length) return;
+
+    // Full list of testimonial images (52)
+    const testimonialImages = [
+        'images/TESTIMONIALS/E1.jpg',
+        'images/TESTIMONIALS/E2.jpg',
+        'images/TESTIMONIALS/E3.jpg',
+        'images/TESTIMONIALS/E4.jpg',
+        'images/TESTIMONIALS/ELB10.jpg',
+        'images/TESTIMONIALS/ELB11.jpg',
+        'images/TESTIMONIALS/ELB13.jpg',
+        'images/TESTIMONIALS/ELB14.jpg',
+        'images/TESTIMONIALS/ELB15.jpg',
+        'images/TESTIMONIALS/ELB18.jpg',
+        'images/TESTIMONIALS/ELB19.jpg',
+        'images/TESTIMONIALS/ELB20.jpg',
+        'images/TESTIMONIALS/ELB21.jpg',
+        'images/TESTIMONIALS/ELB22.jpg',
+        'images/TESTIMONIALS/ELB23.jpg',
+        'images/TESTIMONIALS/ELB25.jpg',
+        'images/TESTIMONIALS/ELB26.jpg',
+        'images/TESTIMONIALS/ELB3.jpg',
+        'images/TESTIMONIALS/ELB31.jpg',
+        'images/TESTIMONIALS/ELB35.jpg',
+        'images/TESTIMONIALS/ELB36.jpg',
+        'images/TESTIMONIALS/ELB37.jpg',
+        'images/TESTIMONIALS/ELB38.jpg',
+        'images/TESTIMONIALS/ELB39.jpg',
+        'images/TESTIMONIALS/ELB40.jpg',
+        'images/TESTIMONIALS/ELB41.jpg',
+        'images/TESTIMONIALS/ELB42.jpg',
+        'images/TESTIMONIALS/ELB44.jpg',
+        'images/TESTIMONIALS/ELB45.jpg',
+        'images/TESTIMONIALS/ELB46.jpg',
+        'images/TESTIMONIALS/ELB48.jpg',
+        'images/TESTIMONIALS/ELB49.jpg',
+        'images/TESTIMONIALS/ELB50.jpg',
+        'images/TESTIMONIALS/ELB51.jpg',
+        'images/TESTIMONIALS/ELB52.jpg',
+        'images/TESTIMONIALS/ELB53.jpg',
+        'images/TESTIMONIALS/ELB54.jpg',
+        'images/TESTIMONIALS/ELB55.jpg',
+        'images/TESTIMONIALS/ELB56.jpg',
+        'images/TESTIMONIALS/ELB57.jpg',
+        'images/TESTIMONIALS/ELB6.jpg',
+        'images/TESTIMONIALS/ELB70.jpg',
+        'images/TESTIMONIALS/ELB72.jpg',
+        'images/TESTIMONIALS/ELB73.jpg',
+        'images/TESTIMONIALS/ELB9.jpg',
+        'images/TESTIMONIALS/K1.jpg',
+        'images/TESTIMONIALS/K2.jpg',
+        'images/TESTIMONIALS/K3.jpg',
+        'images/TESTIMONIALS/K4.jpg',
+        'images/TESTIMONIALS/K5.jpg',
+        'images/TESTIMONIALS/K6.jpg',
+        'images/TESTIMONIALS/K7.jpg'
+    ];
+
+    let current = 0;
+
+    // Build or reuse lightbox UI
+    let lightbox = document.querySelector('.camp-lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.className = 'camp-lightbox';
+        lightbox.innerHTML = `
+            <div class="camp-lightbox-content">
+                <button class="lb-close" aria-label="Close">&times;</button>
+                <button class="lb-btn lb-prev" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+                <img alt="Testimonial photo" />
+                <button class="lb-btn lb-next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+    }
+
+    const lbImg = lightbox.querySelector('img');
+    const lbPrev = lightbox.querySelector('.lb-prev');
+    const lbNext = lightbox.querySelector('.lb-next');
+    const lbClose = lightbox.querySelector('.lb-close');
+
+    function update() {
+        lbImg.src = testimonialImages[current];
+    }
+
+    function open(index) {
+        current = (index + testimonialImages.length) % testimonialImages.length;
+        update();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function next() { current = (current + 1) % testimonialImages.length; update(); }
+    function prev() { current = (current - 1 + testimonialImages.length) % testimonialImages.length; update(); }
+
+    // Bind controls (bind once)
+    if (!lightbox.dataset.bound) {
+        lbPrev.addEventListener('click', prev);
+        lbNext.addEventListener('click', next);
+        lbClose.addEventListener('click', close);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
+        });
+        lightbox.dataset.bound = 'true';
+    }
+
+    // Open on any gallery item click
+    galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+            const src = img.getAttribute('src') || '';
+            const idx = testimonialImages.findIndex(path => src.endsWith(path));
+            open(idx >= 0 ? idx : 0);
+        });
     });
 }
 
