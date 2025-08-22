@@ -257,10 +257,12 @@ p {
 
 /* Hero Section */
 .hero {
-  height: 80vh;
+  height: 120vh;
   min-height: 900px;
   position: relative;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-image {
@@ -276,12 +278,9 @@ p {
 
 .hero-image img:first-child {
   width: 100%;
-  height: 80vh;
-  /* object-fit: cover; */
-object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  transform: scale(1.2);
-
 }
 
 .hero-logo {
@@ -327,7 +326,8 @@ object-fit: contain;
 /* Programs Section */
 .programs-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
+  margin-top: 0;
 }
 
 .programs-grid {
@@ -440,7 +440,7 @@ object-fit: contain;
 /* Features Section */
 .features-section {
   padding: 100px 0;
-  background: white;
+  background: #f8f9fa;
 }
 
 .features-grid {
@@ -508,6 +508,11 @@ object-fit: contain;
 .testimonials-section {
   padding: 100px 0;
   background: #f8f9fa;
+}
+
+/* Alternate testimonials sections for proper color alternation */
+.testimonials-section:nth-child(odd) {
+  background: #ffffff;
 }
 
 .testimonials-grid {
@@ -722,6 +727,13 @@ object-fit: contain;
     gap: 1rem;
     margin-top: 1rem;
     justify-content: center;
+  }
+
+  /* Desktop: align social media icons to the left */
+  @media (min-width: 768px) {
+    .social-links {
+      justify-content: flex-start;
+    }
   }
 
 .social-link {
@@ -1272,8 +1284,13 @@ img[src*="student-"] {
 /* Camps Section */
 .camps-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
   text-align: center;
+}
+
+/* Alternate camps sections for proper color alternation */
+.camps-section:nth-child(even) {
+  background: #f8f9fa;
 }
 
 .camps-grid {
@@ -1561,7 +1578,7 @@ img[src*="student-"] {
 /* Mission Section */
 .mission-section {
   padding: 100px 0;
-  background: white;
+  background: #f8f9fa;
 }
 
 .mission-content {
@@ -1621,7 +1638,7 @@ img[src*="student-"] {
 /* Advantages Section */
 .advantages-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .advantages-grid {
@@ -1661,7 +1678,7 @@ img[src*="student-"] {
 /* Services Section */
 .services-section {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #ffffff;
 }
 
 .services-content {
@@ -1844,7 +1861,7 @@ img[src*="student-"] {
 /* Stats Section */
 .stats-section {
   padding: 100px 0;
-  background: white;
+  background: #f8f9fa;
 }
 
 .stats-grid {
@@ -1878,7 +1895,7 @@ img[src*="student-"] {
 /* Approach Section */
 .approach-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .approach-grid {
@@ -1919,7 +1936,7 @@ img[src*="student-"] {
 /* Quality Section */
 .quality-section {
   padding: 100px 0;
-  background: white;
+  background: #f8f9fa;
 }
 
 .quality-grid {
@@ -1985,7 +2002,7 @@ img[src*="student-"] {
 /* Partner Gallery */
 .partner-gallery {
   padding: 4rem 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .gallery-grid {
@@ -2202,7 +2219,7 @@ img[src*="student-"] {
 /* Contact Info Section */
 .contact-info-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .contact-grid {
@@ -2242,7 +2259,7 @@ img[src*="student-"] {
 /* Contact Form Section */
 .contact-form-section {
   padding: 100px 0;
-  background: white;
+  background: #f8f9fa;
 }
 
 .form-container {
@@ -2444,7 +2461,7 @@ img[src*="student-"] {
 
 /* FAQ Section */
 .faq-section {
-  background: #f4f7fa;
+  background: #ffffff;
   padding: 48px 0 32px 0;
 }
 
@@ -2746,7 +2763,7 @@ img[src*="student-"] {
 /* Responsibilities Section */
 .responsibilities-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
 .responsibilities-grid {
@@ -2769,7 +2786,6 @@ img[src*="student-"] {
 .responsibility-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: #4b5cff;
 }
 
 .responsibility-icon {
@@ -3360,3 +3376,46 @@ img[src*="student-"] {
 .camp-detail-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-600) 100%) !important; }
 .camp-detail-body h3 { color: var(--color-primary) !important; }
 .back-button:hover { background: var(--color-primary) !important; }
+
+/* Modern Photo Section - Center photos vertically and horizontally */
+.modern-photo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.modern-photo-section .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+}
+
+.modern-photo {
+  width: 400px;
+  height: 260px;
+  display: block;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.modern-photo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for modern photo section */
+@media (max-width: 768px) {
+  .modern-photo-section .container {
+    gap: 16px;
+  }
+  
+  .modern-photo {
+    width: 300px;
+    height: 195px;
+  }
+}
