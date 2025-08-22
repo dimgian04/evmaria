@@ -121,11 +121,17 @@ p {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  left: -20px;
 }
 
 .logo {
   height: 50px;
   width: auto;
+  object-fit: contain;
+  max-width: none;
 }
 
 .logo-text {
@@ -280,30 +286,11 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 90%;
   display: block;
 }
 
-.hero-logo {
-  position: absolute;
-  top: 80%;               /* center vertically */
-  left: 20%;             /* distance from left edge */
-  transform: translateY(-50%); /* only adjust vertically */
-
-  opacity: 0;
-  animation: popUp 1s ease-out forwards;
-
-  width: 25vw;            /* responsive size */
-  max-width: 300px;       /* limit max size */
-  min-width: 150px;       /* limit min size */
-  height: auto;           /* keep proportions */
-}
-
-@keyframes popUp {
-  to {
-    transform: translateY(-50%) scale(2.0);
-    opacity: 1;
-  }
-}
+/* Hero logo removed */
 
 /* Section Headers */
 .section-header {
@@ -828,7 +815,19 @@ p {
 }
 
 /* Responsive Design */
+
+/* Logo positioning for different screen sizes */
+@media (max-width: 1200px) {
+  .logo-section {
+    left: -15px;
+  }
+}
+
 @media (max-width: 1024px) {
+  .logo-section {
+    left: -10px;
+  }
+  
   .programs-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -881,6 +880,12 @@ p {
 }
 
 @media (max-width: 768px) {
+  /* Logo positioning for mobile devices */
+  .logo-section {
+    left: -5px;
+    margin-left: 0;
+  }
+  
   /* Hide gallery on mobile testimonials page */
   .partner-gallery {
     display: none;
@@ -1145,6 +1150,12 @@ p {
 }
 
 @media (max-width: 480px) {
+  /* Logo positioning for very small screens */
+  .logo-section {
+    left: 0;
+    margin-left: 0;
+  }
+  
   .container {
     padding: 0 15px;
   }
