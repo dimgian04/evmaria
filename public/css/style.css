@@ -286,7 +286,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 90%;
+  object-position: center 70%;
   display: block;
 }
 
@@ -675,6 +675,7 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+  align-items: start;
 }
 
 .footer-section h4 {
@@ -683,12 +684,21 @@ p {
 }
 
 .footer-logo {
-  height: auto;
-  width: auto;
+  height: auto !important;
+  width: auto !important;
+  max-width: 200px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
   margin-bottom: 1rem;
   display: block;
   /* margin-left: auto; */
   margin-right: auto;
+  /* Ensure the logo maintains its natural aspect ratio */
+  object-position: center;
+  /* Prevent any grid or flexbox stretching */
+  flex-shrink: 0;
+  /* Override any conflicting styles */
+  aspect-ratio: auto;
 }
 
 .footer-links {
@@ -708,6 +718,13 @@ p {
 
 .footer-links a:hover {
   color: white;
+}
+
+/* Ensure the logo section doesn't stretch */
+.footer-section:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
   .social-links {
@@ -1039,6 +1056,8 @@ p {
   /* Center footer logo on mobile */
   .footer-logo {
     margin: 0 auto 1rem;
+    max-width: 180px !important;
+    max-height: 70px !important;
   }
 
   /* Remove unnecessary social-section on mobile */
