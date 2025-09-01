@@ -916,10 +916,6 @@ p {
   }
 
   .nav-list {
-    display: none;
-  }
-  
-  .main-nav.active .nav-list {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -930,6 +926,16 @@ p {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
     gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .main-nav.active .nav-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
   
   .main-nav.active .nav-list li {
@@ -1058,6 +1064,12 @@ p {
     margin: 0 auto 1rem;
     max-width: 180px !important;
     max-height: 70px !important;
+  }
+
+  /* Center Evmaria Services Ltd. text on mobile - specific targeting */
+  .footer-section:first-child p:first-of-type {
+    text-align: center !important;
+    margin: 0 auto !important;
   }
 
   /* Remove unnecessary social-section on mobile */
