@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroSlider();
     initCampGalleries();
     initTestimonialsLightbox();
+    initMobileTestimonialsSlideshow();
 });
 
 // Mobile Menu Functionality
@@ -865,4 +866,156 @@ function initPopupModal() {
             }
         });
     }
+}
+
+// Mobile Testimonials Slideshow
+function initMobileTestimonialsSlideshow() {
+    console.log('Initializing mobile testimonials slideshow...');
+    const slideshow = document.querySelector('.mobile-testimonials-slideshow');
+    console.log('Slideshow element found:', slideshow);
+    
+    if (!slideshow) {
+        console.log('Mobile slideshow not found, skipping initialization');
+        return;
+    }
+    
+    const track = slideshow.querySelector('.slideshow-track');
+    const slides = Array.from(slideshow.querySelectorAll('.slideshow-slide'));
+    const prevBtn = slideshow.querySelector('.slideshow-prev');
+    const nextBtn = slideshow.querySelector('.slideshow-next');
+    const dotsContainer = slideshow.querySelector('.slideshow-dots');
+    
+    if (!track || !slides.length) return;
+    
+    let current = 0;
+    let autoplayInterval = null;
+    const AUTOPLAY_DELAY = 4000; // 4 seconds
+    
+    // Create dots
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    function updateSlideshow() {
+        // Move track to show current slide
+        track.style.transform = `translateX(-${current * 100}%)`;
+        
+        // Update dots
+        if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('button');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === current);
+            });
+        }
+    }
+    
+    function goToSlide(index) {
+        current = (index + slides.length) % slides.length;
+        updateSlideshow();
+        restartAutoplay();
+    }
+    
+    function nextSlide() {
+        goToSlide(current + 1);
+    }
+    
+    function prevSlide() {
+        goToSlide(current - 1);
+    }
+    
+    // Autoplay functionality
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, AUTOPLAY_DELAY);
+    }
+    
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+    
+    function restartAutoplay() {
+        startAutoplay();
+    }
+    
+    // Event listeners
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+        });
+    }
+    
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const SWIPE_THRESHOLD = 50;
+    
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+    }, { passive: true });
+    
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const delta = touchEndX - touchStartX;
+        
+        if (Math.abs(delta) > SWIPE_THRESHOLD) {
+            if (delta < 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        } else {
+            restartAutoplay();
+        }
+    }, { passive: true });
+    
+    // Pause autoplay on hover (for devices that support hover)
+    slideshow.addEventListener('mouseenter', stopAutoplay);
+    slideshow.addEventListener('mouseleave', startAutoplay);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        // Only handle keyboard events if slideshow is visible
+        if (slideshow.offsetParent === null) return;
+        
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextSlide();
+        }
+    });
+    
+    // Initialize
+    updateSlideshow();
+    startAutoplay();
+    
+    console.log('Mobile slideshow initialized successfully');
+    console.log('Slideshow visible:', slideshow.offsetParent !== null);
+    console.log('Current slide:', current);
+    
+    // Handle visibility change (pause when tab is not active)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoplay();
+        } else {
+            startAutoplay();
+        }
+    });
 } 
