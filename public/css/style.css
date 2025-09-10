@@ -951,10 +951,6 @@ p {
   }
 
   .nav-list {
-    display: none;
-  }
-  
-  .main-nav.active .nav-list {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -965,6 +961,16 @@ p {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
     gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .main-nav.active .nav-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
   
   .main-nav.active .nav-list li {
@@ -1093,6 +1099,12 @@ p {
     margin: 0 auto 1rem;
     max-width: 180px !important;
     max-height: 70px !important;
+  }
+
+  /* Center Evmaria Services Ltd. text on mobile - specific targeting */
+  .footer-section:first-child p:first-of-type {
+    text-align: center !important;
+    margin: 0 auto !important;
   }
 
   /* Remove unnecessary social-section on mobile */
@@ -1693,12 +1705,7 @@ img[src*="student-"] {
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
   margin-left: 100px;
-}
-
-.mission-image img:hover {
-  transform: scale(1.02);
 }
 
 /* Advantages Section */
@@ -1860,11 +1867,6 @@ img[src*="student-"] {
   height: auto;
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.services-image img:hover {
-  transform: scale(1.02);
 }
 
 .service-image-top,
@@ -2114,49 +2116,38 @@ img[src*="student-"] {
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px); /* Reduced lift for lighter effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Lighter shadow */
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, filter 0.4s ease; /* Added filter transition for subtle brightness effect */
   display: block;
   margin: 0 auto;
 }
 
 .gallery-item:hover .gallery-image {
-  transform: scale(1.05);
+  transform: scale(1.02); /* Reduced scale for subtler effect */
+  filter: brightness(1.05); /* Subtle brightness increase */
 }
 
 .gallery-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  color: white;
-  padding: 2rem 1.5rem 1.5rem;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
+  display: none; /* Hide the text overlay completely */
 }
 
 .gallery-item:hover .gallery-overlay {
-  transform: translateY(0);
+  display: none; /* Ensure it stays hidden on hover */
 }
 
 .gallery-overlay h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: white;
+  display: none; /* Hide the heading */
 }
 
 .gallery-overlay p {
-  font-size: 0.9rem;
-  margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.9);
+  display: none; /* Hide the paragraph */
 }
 
 /* Mobile Testimonials Slideshow */
@@ -2930,14 +2921,9 @@ img[src*="student-"] {
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
   object-position: center;
   margin-top: 20px;
   display: block;
-}
-
-.team-main-image:hover {
-  transform: scale(1.02);
 }
 
 /* Responsibilities Section */
@@ -3037,22 +3023,11 @@ img[src*="student-"] {
   margin-bottom: 3rem;
 }
 
-.top-image:hover,
-.bottom-image:hover {
-  transform: scale(1.02);
-}
-
 .top-image img,
 .bottom-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.top-image:hover img,
-.bottom-image:hover img {
-  transform: scale(1.05);
 }
 
 
@@ -3080,13 +3055,11 @@ img[src*="student-"] {
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border-left: 4px solid transparent;
 }
 
 .features-column .feature-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  border-left-color: var(--color-primary-600);
 }
 
 .features-column .feature-item i {

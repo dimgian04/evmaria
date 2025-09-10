@@ -229,7 +229,10 @@ function clearFieldError(field) {
 // Scroll Effects
 function initScrollEffects() {
     const header = document.querySelector('.site-header');
+    const nav = document.querySelector('.main-nav');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
     let lastScrollTop = 0;
+    let isClosingMenu = false;
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -244,6 +247,20 @@ function initScrollEffects() {
         // Hide/show header on scroll
         if (scrollTop > lastScrollTop && scrollTop > 200) {
             header.style.transform = 'translateY(-100%)';
+            
+            // Close mobile navigation menu when scrolling down (header hides)
+            if (nav && mobileToggle && nav.classList.contains('active') && !isClosingMenu) {
+                isClosingMenu = true;
+                
+                // Remove active class to trigger CSS animation
+                nav.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                
+                // Reset flag after animation completes
+                setTimeout(() => {
+                    isClosingMenu = false;
+                }, 300);
+            }
         } else {
             header.style.transform = 'translateY(0)';
         }
