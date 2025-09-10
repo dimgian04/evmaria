@@ -920,15 +920,15 @@ p {
   }
   
   .slide-caption {
-    padding: 1.5rem 1rem 1rem;
+    display: none; /* Hide captions on mobile */
   }
   
   .slide-caption h3 {
-    font-size: 1.1rem;
+    display: none; /* Hide headings on mobile */
   }
   
   .slide-caption p {
-    font-size: 0.85rem;
+    display: none; /* Hide descriptions on mobile */
   }
   
   .slideshow-nav {
