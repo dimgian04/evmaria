@@ -320,8 +320,11 @@ p {
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 3rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .program-card {
@@ -396,6 +399,7 @@ p {
 .program-card h3 {
   color: #333;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 .program-card p {
@@ -2600,6 +2604,11 @@ img[src*="student-"] {
   transform: translateY(-2px);
 }
 
+/* Add extra right padding to select dropdowns to move arrow away from edge */
+.form-group select {
+  padding-right: 4rem !important;
+}
+
 /* Submit button enhancement */
 .contact-form button[type="submit"] {
   position: relative;
@@ -2940,6 +2949,18 @@ img[src*="student-"] {
 .responsibilities-section {
   padding: 100px 0;
   background: #ffffff;
+}
+
+/* University Camp Detail Pages */
+.camp-detail-content {
+  padding: 6rem 0 60px 0;
+}
+
+.camp-detail-header p {
+  color: white;
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
 .responsibilities-grid {
