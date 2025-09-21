@@ -502,6 +502,11 @@ p {
   background: #ffffff;
 }
 
+/* Ensure Educational Partner Testimonials has gray background */
+#partner-testimonials.testimonials-section {
+  background: #f8f9fa;
+}
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1754,6 +1759,11 @@ img[src*="student-"] {
   background: #ffffff;
 }
 
+/* Testimonials page specific styling */
+#testimonials.services-section {
+  padding: 6rem 0 0 0;
+}
+
 .services-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2069,7 +2079,7 @@ img[src*="student-"] {
 
 /* Partner Gallery */
 .partner-gallery {
-  padding: 4rem 0;
+  padding: 0 0 4rem 0;
   background: #ffffff;
 }
 
@@ -2389,7 +2399,7 @@ img[src*="student-"] {
 
 /* Contact Info Section */
 .contact-info-section {
-  padding: 100px 0;
+  padding: 6rem 0;
   background: #ffffff;
 }
 
@@ -3009,7 +3019,7 @@ img[src*="student-"] {
 
 /* Features Section - New Layout */
 .features-layout {
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 .top-image,
