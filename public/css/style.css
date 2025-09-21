@@ -720,13 +720,24 @@ p {
 }
 
 .footer-links a {
-  color: var(--color-footer-muted);
+  color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
   color: white;
+}
+
+/* Ensure all links in footer are white */
+.site-footer a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Ensure the logo section doesn't stretch */
