@@ -677,6 +677,8 @@ p {
   background: var(--color-footer-bg);
   color: white;
   padding: 60px 0 20px;
+  position: relative;
+  z-index: 100;
 }
 
 .footer-content {
@@ -985,12 +987,17 @@ p {
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 1;
+    max-height: 0;
+    overflow: hidden;
   }
   
   .main-nav.active .nav-list {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    max-height: 500px;
+    overflow: visible;
   }
   
   .main-nav.active .nav-list li {
@@ -1233,6 +1240,46 @@ p {
   .quality-section,
   .stats-section {
     overflow-x: hidden;
+  }
+
+  /* Ensure footer is always visible on mobile */
+  .site-footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+    margin-top: 0 !important;
+    padding-top: 2rem !important;
+  }
+
+  /* Ensure footer content is always visible */
+  .footer-content {
+    display: grid !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Make sure footer sections are visible */
+  .footer-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Force footer to be at the bottom and visible */
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+  }
+
+  .site-footer {
+    margin-top: auto !important;
   }
 }
 
