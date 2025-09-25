@@ -129,7 +129,7 @@ function initContactForm() {
                 if (!data.privacy) {
                     validationActive = true;
                     const privacyField = contactForm.querySelector('[name="privacy"]');
-                    if (privacyField);
+                    if (privacyField) showFieldError(privacyField, 'Please accept the Privacy Policy.');
                     showNotification('Please accept the Privacy Policy to continue.', 'error');
                     return;
                 }
@@ -497,14 +497,9 @@ function animateCounters() {
 // Parallax Effect for Hero Section
 function initParallax() {
     const hero = document.querySelector('.hero');
-    
-    if (hero) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        });
-    }
+    if (!hero) return;
+    // Make hero static on all pages
+    hero.style.transform = '';
 }
 
 // Hero slider (simple, dependency-free)
@@ -662,6 +657,7 @@ function initCampGalleries() {
             </div>
         `;
         document.body.appendChild(lightbox);
+        ensureLightboxStyles();
         const lbImg = lightbox.querySelector('img');
         const lbPrev = lightbox.querySelector('.lb-prev');
         const lbNext = lightbox.querySelector('.lb-next');
@@ -682,7 +678,6 @@ function initCampGalleries() {
         lbPrev.addEventListener('click', () => { prev(); lbImg.src = slides[current].querySelector('img').src; });
         lbNext.addEventListener('click', () => { next(); lbImg.src = slides[current].querySelector('img').src; });
         lbClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('open')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -783,6 +778,7 @@ function initTestimonialsLightbox() {
     const lbPrev = lightbox.querySelector('.lb-prev');
     const lbNext = lightbox.querySelector('.lb-next');
     const lbClose = lightbox.querySelector('.lb-close');
+    ensureLightboxStyles();
 
     function update() {
         lbImg.src = testimonialImages[current];
@@ -808,7 +804,6 @@ function initTestimonialsLightbox() {
         lbPrev.addEventListener('click', prev);
         lbNext.addEventListener('click', next);
         lbClose.addEventListener('click', close);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('open')) return;
             if (e.key === 'Escape') close();
@@ -863,6 +858,46 @@ window.EvmariaUtils = {
     throttle
 }; 
 
+// Inject or ensure themed styles for lightbox controls (once)
+function ensureLightboxStyles() {
+    if (document.getElementById('lightbox-theme-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'lightbox-theme-styles';
+    style.textContent = `
+      .camp-lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 10000; }
+      .camp-lightbox.open { display: flex; }
+      .camp-lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; }
+      .camp-lightbox-content img { max-width: 100%; max-height: 90vh; display: block; border-radius: 8px; }
+      .camp-lightbox .lb-btn, .camp-lightbox .lb-close { position: absolute; background: #2f3552; color: #fff; border: none; border-radius: 999px; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.3); transition: transform 0.12s ease, background 0.2s ease; }
+      .camp-lightbox .lb-prev { left: -56px; top: 50%; transform: translateY(-50%); }
+      .camp-lightbox .lb-next { right: -56px; top: 50%; transform: translateY(-50%); }
+      .camp-lightbox .lb-close { top: -56px; right: 0; font-size: 24px; line-height: 1; }
+      .camp-lightbox .lb-btn:hover { background: #3a4060; transform: translateY(calc(-50% - 2px)); }
+      .camp-lightbox .lb-close:hover { background: #3a4060; transform: translateY(-1px); }
+      @media (max-width: 768px) {
+        .camp-lightbox .lb-prev { left: 8px; }
+        .camp-lightbox .lb-next { right: 8px; }
+        .camp-lightbox .lb-close { top: -52px; right: -4px; }
+      }
+
+      /* Unify slider button colors (mobile testimonials and camp galleries) with desktop theme */
+      .mobile-testimonials-slideshow .slideshow-prev,
+      .mobile-testimonials-slideshow .slideshow-next,
+      .camp-gallery .nav-prev,
+      .camp-gallery .nav-next {
+        background: #2f3552 !important;
+        color: #ffffff !important;
+      }
+      .mobile-testimonials-slideshow .slideshow-prev:hover,
+      .mobile-testimonials-slideshow .slideshow-next:hover,
+      .camp-gallery .nav-prev:hover,
+      .camp-gallery .nav-next:hover {
+        background: #3a4060 !important;
+        color: #ffffff !important;
+      }
+    `;
+    document.head.appendChild(style);
+}
 // Popup Modal Functionality
 function initPopupModal() {
     const popupModal = document.getElementById('popup-modal');
