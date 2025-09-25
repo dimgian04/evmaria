@@ -3651,8 +3651,8 @@ img[src*="student-"] {
 }
 
 .modern-photo:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive adjustments for modern photo section */
