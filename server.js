@@ -2,33 +2,33 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 require('dotenv').config();
 
-// Security middleware
-app.use(helmet());
-
-// Rate limiting for contact form
-const contactLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 requests per windowMs
-  message: {
-    success: false,
-    message: 'Too many contact form submissions, please try again later.'
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Content Security Policy to allow Google Maps and inline scripts
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', 
+    "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://maps.googleapis.com https://maps.gstatic.com; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' data: https:; " +
+    "frame-src 'self' https://www.google.com https://maps.google.com; " +
+    "connect-src 'self' https:; " +
+    "object-src 'none'; " +
+    "base-uri 'self'; " +
+    "form-action 'self'"
+  );
+  next();
+});
 
 // Email configuration
 const transporter = nodemailer.createTransport({
@@ -40,7 +40,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Contact form endpoint
-app.post('/api/contact', contactLimiter, async (req, res) => {
+app.post('/api/contact', async (req, res) => {
   try {
     const {
       firstName,
@@ -53,17 +53,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       newsletter,
       privacy
     } = req.body;
-
-    // Debug: Log received data
-    console.log('Received form data:', {
-      firstName,
-      lastName,
-      email,
-      country,
-      program,
-      message: message ? 'Present' : 'Missing',
-      privacy
-    });
 
     // Validation
     if (!firstName || !lastName || !email || !country || !program || !message || !privacy) {
@@ -278,8 +267,12 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                     <span>${email}</span>
                   </div>
                   <div class="info-item">
+                    <strong>Phone Number</strong>
+                    <span>${phone || 'Not provided'}</span>
+                  </div>
+                  <div class="info-item">
                     <strong>Country</strong>
-                    <span>${country || 'Not provided'}</span>
+                    <span>${country}</span>
                   </div>
                 </div>
               </div>
@@ -628,15 +621,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 <p>Thank you for reaching out to Evmaria Services. We have received your inquiry and our dedicated team will review your message and respond within 24-48 hours.</p>
               </div>
               
-              <div style="background: #ff4444; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);">
-                <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 700;">⚠️ IMPORTANT NOTICE</h3>
-                <p style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.4;">
-                  Please do NOT reply to this email!<br>
-                  If you need to contact us, send your message to:<br>
-                  <strong style="font-size: 18px; text-decoration: underline;">evmariaservises@gmail.com</strong>
-                </p>
-              </div>
-              
               <div class="summary">
                 <h3>Your Message Summary</h3>
                 <div class="summary-item">
@@ -645,7 +629,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 </div>
                 <div class="summary-item">
                   <strong>Country</strong>
-                  <span>${country || 'Not provided'}</span>
+                  <span>${country}</span>
                 </div>
                 <div class="summary-item">
                   <strong>Your Message</strong>

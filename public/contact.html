@@ -380,13 +380,14 @@
       
       <div class="map-container" style="text-align:center;">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.8599192074893!2d-0.10937754797483165!3d51.52116963082979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761bf005e9fd85%3A0xfd0a1ec5f5ac734e!2sCBW%20Staffing%20Solutions!5e0!3m2!1sel!2sgr!4v1753898353163!5m2!1sel!2sgr" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.123456789!2d-0.10937754797483165!3d51.52116963082979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761bf005e9fd85%3A0xfd0a1ec5f5ac734e!2s15a%20Station%20Road%2C%20Epping%2C%20Essex%20CM16%204HG%2C%20UK!5e0!3m2!1sen!2suk!4v1753898353163!5m2!1sen!2suk" 
           width="100%" 
           height="500" 
           style="border:0; max-width: 1200px; width: 100%; margin: 0 auto; display: block;" 
           allowfullscreen="" 
           loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
+          referrerpolicy="no-referrer-when-downgrade"
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
         </iframe>
       </div>
     </div>
@@ -493,30 +494,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // FAQ toggle functionality (robust)
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.faq-question').forEach(function(q) {
-        q.addEventListener('click', function() {
-          // Toggle open class
-          this.classList.toggle('open');
-          // Toggle answer visibility
-          var answer = this.nextElementSibling;
-          if (answer && answer.classList.contains('faq-answer')) {
-            if (answer.style.display === 'block') {
-              answer.style.display = 'none';
-            } else {
-              answer.style.display = 'block';
-            }
-          }
-        });
-        // Ensure all answers are hidden initially
-        var answer = q.nextElementSibling;
-        if (answer && answer.classList.contains('faq-answer')) {
-          answer.style.display = 'none';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
