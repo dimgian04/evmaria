@@ -67,6 +67,11 @@ function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        // Disable native browser validation bubbles; use custom validation instead
+        contactForm.setAttribute('novalidate', '');
+        
+        // Only show field errors after user attempts to submit
+        let validationActive = false;
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -86,6 +91,14 @@ function initContactForm() {
                 const missingFields = requiredFields.filter(field => !data[field] || data[field].trim() === '');
                 
                 if (missingFields.length > 0) {
+                    validationActive = true;
+                    // Mark all missing required fields with an error
+                    missingFields.forEach(fieldName => {
+                        const fieldEl = contactForm.querySelector(`[name="${fieldName}"]`);
+                        if (fieldEl) {
+                            showFieldError(fieldEl, 'This field is required.');
+                        }
+                    });
                     showNotification('Please fill in all required fields.', 'error');
                     return;
                 }
@@ -93,6 +106,9 @@ function initContactForm() {
                 // Email validation
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(data.email)) {
+                    validationActive = true;
+                    const emailField = contactForm.querySelector('[name="email"]');
+                    if (emailField) showFieldError(emailField, 'Please enter a valid email address.');
                     showNotification('Please enter a valid email address.', 'error');
                     return;
                 }
@@ -101,6 +117,9 @@ function initContactForm() {
                 if (data.phone && data.phone.trim() !== '') {
                     const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
                     if (!phoneRegex.test(data.phone.replace(/[\s\-\(\)]/g, ''))) {
+                        validationActive = true;
+                        const phoneField = contactForm.querySelector('[name="phone"]');
+                        if (phoneField) showFieldError(phoneField, 'Please enter a valid phone number.');
                         showNotification('Please enter a valid phone number.', 'error');
                         return;
                     }
@@ -108,6 +127,9 @@ function initContactForm() {
                 
                 // Privacy policy validation
                 if (!data.privacy) {
+                    validationActive = true;
+                    const privacyField = contactForm.querySelector('[name="privacy"]');
+                    if (privacyField);
                     showNotification('Please accept the Privacy Policy to continue.', 'error');
                     return;
                 }
@@ -146,14 +168,16 @@ function initContactForm() {
             }
         });
         
-        // Real-time validation
+        // Real-time validation (only after first failed submit)
         const inputs = contactForm.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
+                if (!validationActive) return;
                 validateField(this);
             });
             
             input.addEventListener('input', function() {
+                if (!validationActive) return;
                 clearFieldError(this);
             });
         });
@@ -347,7 +371,6 @@ function showNotification(message, type = 'info') {
     notification.innerHTML = `
         <div class="notification-content">
             <span class="notification-message">${message}</span>
-            <button class="notification-close">&times;</button>
         </div>
     `;
     
@@ -358,6 +381,7 @@ function showNotification(message, type = 'info') {
         right: 20px;
         background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
         color: white;
+        font-size: 0.85rem;
         padding: 1rem 1.5rem;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -375,12 +399,7 @@ function showNotification(message, type = 'info') {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    });
+    // Removed manual close button; notification auto-dismisses
     
     // Auto remove after 5 seconds
     setTimeout(() => {

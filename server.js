@@ -381,10 +381,7 @@ app.post('/api/contact', async (req, res) => {
                 <div class="message-text">${message}</div>
               </div>
               
-              <div class="signature">
-                <h3>Best regards</h3>
-                <p>The Evmaria Services Team</p>
-              </div>
+              
             </div>
             
             <div class="footer">
