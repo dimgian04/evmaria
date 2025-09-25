@@ -54,6 +54,17 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       privacy
     } = req.body;
 
+    // Debug: Log received data
+    console.log('Received form data:', {
+      firstName,
+      lastName,
+      email,
+      country,
+      program,
+      message: message ? 'Present' : 'Missing',
+      privacy
+    });
+
     // Validation
     if (!firstName || !lastName || !email || !country || !program || !message || !privacy) {
       return res.status(400).json({
@@ -267,12 +278,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                     <span>${email}</span>
                   </div>
                   <div class="info-item">
-                    <strong>Phone Number</strong>
-                    <span>${phone || 'Not provided'}</span>
-                  </div>
-                  <div class="info-item">
                     <strong>Country</strong>
-                    <span>${country}</span>
+                    <span>${country || 'Not provided'}</span>
                   </div>
                 </div>
               </div>
@@ -621,6 +628,15 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 <p>Thank you for reaching out to Evmaria Services. We have received your inquiry and our dedicated team will review your message and respond within 24-48 hours.</p>
               </div>
               
+              <div style="background: #ff4444; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);">
+                <h3 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 700;">⚠️ IMPORTANT NOTICE</h3>
+                <p style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.4;">
+                  Please do NOT reply to this email!<br>
+                  If you need to contact us, send your message to:<br>
+                  <strong style="font-size: 18px; text-decoration: underline;">evmariaservises@gmail.com</strong>
+                </p>
+              </div>
+              
               <div class="summary">
                 <h3>Your Message Summary</h3>
                 <div class="summary-item">
@@ -629,7 +645,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 </div>
                 <div class="summary-item">
                   <strong>Country</strong>
-                  <span>${country}</span>
+                  <span>${country || 'Not provided'}</span>
                 </div>
                 <div class="summary-item">
                   <strong>Your Message</strong>
