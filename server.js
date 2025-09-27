@@ -62,7 +62,7 @@ const transporter = nodemailer.createTransport({
 // Email addresses
 const FROM_EMAIL = process.env.EMAIL_USER; // Gmail account (host_email)
 const DISPLAY_EMAIL = 'evmariaservises@gmail.com'; // What users see as sender
-const TO_EMAIL = 'aggverykios@gmail.com'; // Where emails are sent (test email)
+const TO_EMAIL = 'evmariaservises@gmail.com'; // Where emails are sent (test email)
 
 // Program mapping for full names
 const programNames = {
