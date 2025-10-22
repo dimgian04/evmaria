@@ -979,7 +979,8 @@ p {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: rgba(47, 53, 82, 0.7);
+    backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
     gap: 0;
