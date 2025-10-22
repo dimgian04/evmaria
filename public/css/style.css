@@ -403,8 +403,10 @@ p {
 }
 
 .program-card p {
-  color: #666;
-  margin-bottom: 1.5rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  font-family: 'Kalam', cursive;
 }
 
 .program-features {
@@ -3475,7 +3477,7 @@ img[src*="student-"] {
 .camp-gallery-viewport {
   position: relative;
   overflow: hidden;
-  height: 280px;
+  height: 350px;
 }
 
 .camp-gallery-track {
@@ -3547,7 +3549,7 @@ img[src*="student-"] {
 }
 
 @media (max-width: 768px) {
-  .camp-gallery-viewport { height: 220px; }
+  .camp-gallery-viewport { height: 280px; }
 }
 
 /* Lightbox for Gallery */
