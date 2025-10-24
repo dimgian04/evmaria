@@ -194,8 +194,10 @@ p {
   position: absolute;
   top: 100%;
   left: 0;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(47, 53, 82, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 1rem 0;
   min-width: 200px;
@@ -204,6 +206,7 @@ p {
   transform: translateY(-10px);
   transition: all 0.3s ease;
   list-style: none;
+  z-index: 1001;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -215,14 +218,14 @@ p {
 .dropdown-menu li a {
   display: block;
   padding: 0.5rem 1.5rem;
-  color: #333;
+  color: #fff;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-menu li a:hover {
-  background: #f8f9fa;
-  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: #e6e8f3;
 }
 
 /* Enable dropdown open on mobile when JS toggles .active */
@@ -922,6 +925,137 @@ p {
 }
 
 @media (max-width: 768px) {
+  /* Enforce mobile-only section color alternation across pages */
+  /* index.html */
+  .programs-section { background-color: #ffffff !important; }
+  .features-section { background-color: #f8f9fa !important; }
+
+  /* travel-camps.html */
+  #uk-camps.camps-section { background-color: #ffffff !important; }
+  #uk-camps.camps-section .container { background-color: #ffffff !important; }
+  #ireland-camps.camps-section { background-color: #f8f9fa !important; }
+  #malta-camps.camps-section { background-color: #ffffff !important; }
+  #scotland-camps.camps-section { background-color: #f8f9fa !important; }
+
+  /* travel-camps: soften shadows for UK camp cards on mobile */
+  #uk-camps .camps-grid { padding-bottom: 16px; overflow: visible; }
+  #uk-camps .camp-card { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important; }
+  #uk-camps .camp-card:hover { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important; transform: none; }
+
+  /* travel-camps: apply same subtle shadows to other regions */
+  #ireland-camps .camps-grid { padding-bottom: 16px; overflow: visible; }
+  #malta-camps .camps-grid { padding-bottom: 16px; overflow: visible; }
+  #scotland-camps .camps-grid { padding-bottom: 16px; overflow: visible; }
+
+  #ireland-camps .camp-card,
+  #malta-camps .camp-card,
+  #scotland-camps .camp-card { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important; }
+
+  #ireland-camps .camp-card:hover,
+  #malta-camps .camp-card:hover,
+  #scotland-camps .camp-card:hover { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important; transform: none; }
+
+  /* team.html */
+  .team-section { background-color: #ffffff !important; }
+  .responsibilities-section { background-color: #f8f9fa !important; }
+  .values-section { background-color: #ffffff !important; }
+
+  /* why-evmaria.html */
+  .services-section,
+  .mission-section,
+  .advantages-section,
+  .stats-section,
+  .modern-photo-section,
+  .approach-section,
+  .quality-section { background-color: #f8f9fa !important; }
+
+  /* why-evmaria: subtle shadows on all cards/images */
+  .advantage-card,
+  .stat-card,
+  .approach-step,
+  .quality-item,
+  .feature-highlight,
+  .pillar,
+  .services-image img,
+  .service-image-top,
+  .service-image-main,
+  .service-image-bottom { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important; }
+
+  .advantage-card:hover,
+  .stat-card:hover,
+  .approach-step:hover,
+  .quality-item:hover,
+  .feature-highlight:hover,
+  .pillar:hover,
+  .services-image img:hover,
+  .service-image-top:hover,
+  .service-image-main:hover,
+  .service-image-bottom:hover { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important; transform: none; }
+
+  /* testimonials.html */
+  #testimonials.services-section { background-color: #ffffff !important; }
+  .partner-gallery { background-color: #f8f9fa !important; }
+  #partner-testimonials.testimonials-section { background-color: #ffffff !important; }
+
+  /* contact.html */
+  .contact-info-section { background-color: #ffffff !important; }
+  .contact-form-section { background-color: #f8f9fa !important; }
+  .faq-section { background-color: #ffffff !important; }
+  .map-section { background-color: #f8f9fa !important; }
+
+  /* global: add consistent bottom padding at end of sections on mobile */
+  section > .container { padding-bottom: 16px !important; overflow: visible; }
+
+  /* team.html: make all cards' shadows subtle on mobile */
+  .team-card,
+  .value-card,
+  .responsibility-card { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important; }
+  .team-card:hover,
+  .value-card:hover,
+  .responsibility-card:hover { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important; transform: none; }
+
+  /* team.html: enforce section backgrounds (mobile only) */
+  .team-section { background-color: #ffffff !important; }
+  .responsibilities-section { background-color: #f8f9fa !important; }
+  .values-section { background-color: #f8f9fa !important; }
+
+  /* team.html: subtle shadow for main team image on mobile */
+  .team-main-image { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important; }
+  .team-main-image:hover { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important; }
+  /* Prevent nested scrolling in Programs section on mobile */
+  .programs-section,
+  .programs-section .container,
+  .programs-section .programs-grid {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+  /* Travel Camps: eliminate inner white gaps so media touches rounded edges */
+  .camp-card {
+    padding: 0 !important;       /* remove inner gutter creating white border */
+  }
+
+  .camp-image {
+    margin: 0 !important;        /* ensure no outer gap */
+    line-height: 0 !important;   /* avoid baseline gaps */
+  }
+
+  .camp-image img {
+    display: block !important;   /* remove inline image gaps */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .camp-content {
+    margin: 0 !important;        /* ensure background reaches card edge */
+    padding: 1.5rem !important;  /* keep readable inner spacing */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
   /* Logo positioning for mobile devices */
   .logo-section {
     left: -5px;
@@ -3662,10 +3796,20 @@ img[src*="student-"] {
 @media (max-width: 768px) {
   .modern-photo-section .container {
     gap: 16px;
+    flex-direction: column;
+    align-items: center;
   }
   
   .modern-photo {
-    width: 300px;
-    height: 195px;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    aspect-ratio: 16/10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .modern-photo:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+    transform: none;
   }
 }
