@@ -78,6 +78,15 @@
     .form-group select {
       padding-right: 4rem !important;
     }
+
+    /* Disable hover animation on social cards for this page only */
+    .social-section .social-card {
+      transition: none;
+    }
+    .social-section .social-card:hover {
+      transform: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
@@ -87,7 +96,7 @@
       <div class="header-inner">
         <div class="logo-section">
           <a href="index.html">
-            <img src="images/evmaria-logo-1.png" alt="Evmaria Services Logo" class="logo">
+            <img src="images/evmaria-logo-big.png" alt="Evmaria Services Logo" class="logo">
           </a>
             
         </div>
