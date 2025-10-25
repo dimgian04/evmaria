@@ -11,6 +11,17 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Hide extra spacing on mobile */
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none;
+      }
+      .mobile-reduce {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -60,19 +71,17 @@
 
   </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Testimonials</h2>
-        <p>Hear from our educational partners and students about their experiences</p>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Partner Gallery Section -->
-  <section class="partner-gallery">
-    <div class="container">
+  <section class="partner-gallery" style="background-image: url('images/mapback.png'); background-size: cover; background-position: bottom; background-repeat: no-repeat; position: relative;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="section-header">
+        <br><br><br>
+        <h2>Testimonials</h2>
+        <p>Hear from our educational partners and students about their experiences</p>
+        <br>
+      </div>
       <!-- Desktop Gallery Grid -->
       <div class="gallery-grid">
         <div class="gallery-item">
@@ -210,38 +219,9 @@
             <p>Real-world English conversation opportunities</p>
           </div>
         </div>
-        
-        <div class="gallery-item">
-          <img src="images/TESTIMONIALS/ELB3.jpg" alt="Evmaria Summer Camp Group" class="gallery-image">
-          <div class="gallery-overlay">
-            <h3>Global Connections</h3>
-            <p>Students forming international friendships</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="images/TESTIMONIALS/ELB31.jpg" alt="Evmaria Summer Camp Group" class="gallery-image">
-          <div class="gallery-overlay">
-            <h3>Educational Excellence</h3>
-            <p>Quality teaching in beautiful locations</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="images/TESTIMONIALS/ELB35.jpg" alt="Evmaria Summer Camp Group" class="gallery-image">
-          <div class="gallery-overlay">
-            <h3>Summer Memories</h3>
-            <p>Creating lasting memories with new friends</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="images/TESTIMONIALS/ELB36.jpg" alt="Evmaria Summer Camp Group" class="gallery-image">
-          <div class="gallery-overlay">
-            <h3>Learning Together</h3>
-            <p>Collaborative educational experiences</p>
-          </div>
-        </div>
+<br><br><br>
+<br><br><br>
+<br><br><br>
       </div>
       
       <!-- Mobile Slideshow -->
@@ -410,6 +390,7 @@
         </div>
       </div>
     </div>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br class="desktop-only">
   </section>
 
   <!-- Partner Testimonials Section -->
